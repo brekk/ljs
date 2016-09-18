@@ -1,36 +1,105 @@
 {
-  "name": "ljs",
+  "name": "ljs2",
   "description": "Generate docs from your source",
-  "version": "0.3.2",
-  "homepage": "https://github.com/phadej/ljs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/brekk/ljs2",
   "author": {
     "name": "Oleg Grenrus",
     "email": "oleg.grenrus@iki.fi",
     "url": "http://oleg.fi/"
   },
+  "contributors": [
+    "Brekk Bockrath <brekk@brekkbockrath.com>"
+  ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/phadej/ljs.git"
+    "url": "git://github.com/brekk/ljs2.git"
   },
   "bugs": {
-    "url": "https://github.com/phadej/ljs/issues"
+    "url": "https://github.com/brekk/ljs2/issues"
   },
   "license": "MIT",
   "main": "lib/literate.js",
-  "bin": {
-    "ljs": "./bin/ljs.js"
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ],
+    "files": [
+      "tests/*.js",
+      "tests/**/*.js"
+    ],
+    "source": [
+      "src/*.js",
+      "src/**/*.js"
+    ],
+    "concurrency": 10
   },
-  "engines": {
-    "node": ">= 0.10.0"
+  "nyc": {
+    "statements": 64,
+    "branches": 37,
+    "functions": 68,
+    "lines": 64,
+    "reporter": [
+      "lcov",
+      "json",
+      "html",
+      "text",
+      "text-summary"
+    ],
+    "exclude": [
+      "node_modules",
+      "tests",
+      "src/core/fs.js",
+      "src/bin/*.js"
+    ],
+    "include": [
+      "src/*.js",
+      "src/**/*.js"
+    ],
+    "require": [
+      "babel-register"
+    ],
+    "all": true,
+    "check-coverage": true
+  },
+  "bin": {
+    "ljs2": "./bin/ljs2.js"
   },
   "scripts": {
-    "test": "make test"
+    "test-old": "make test",
+    "test": "npm run lint && npm run build",
+    "test-es6": "ava",
+    "test-core": "npm run transpile && npm run test-es6",
+    "test-log": "npm run test-core > test-output.log",
+    "cover": "nyc npm run test-core",
+    "report": "istanbul report",
+    "transpile": "babel src -d lib",
+    "build": "npm run cover",
+    "lint": "eslint -c ./.eslintrc src/** --rule 'no-console: 2'",
+    "publish": "npm run build"
   },
   "devDependencies": {
-    "david": "^6.1.4",
-    "eslint": "^1.3.1",
-    "jscs": "^2.1.1",
-    "jshint": "^2.6.0"
+    "ava": "^0.16.0",
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.9.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-register": "^6.14.0",
+    "david": "^9.0.0",
+    "debug": "^2.2.0",
+    "eslint": "^3.5.0",
+    "eslint-config-standard": "^6.0.1",
+    "eslint-plugin-ava": "^3.0.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^1.15.0",
+    "eslint-plugin-lodash-fp": "^2.0.1",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "nyc": "^8.3.0"
   },
   "keywords": [
     "literate",
@@ -41,8 +110,9 @@
   ],
   "dependencies": {
     "commander": "^2.6.0",
-    "esprima": "^2.0.0",
-    "glob": "^5.0.14",
-    "underscore": "^1.8.2"
+    "esprima": "^3.0.0",
+    "f-utility": "^1.0.2",
+    "glob": "^7.0.6",
+    "lodash": "^4.15.0"
   }
 }
