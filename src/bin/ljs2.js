@@ -1,8 +1,12 @@
 #!/usr/bin/env node
+/* eslint-disable max-len */
+/* eslint-disable spaced-comment */
 /**
   # ljs2
 
   > Generate docs from your source
+
+  [![CircleCI](https://circleci.com/gh/brekk/ljs2.svg?style=badge&circle-token=ba5f3371283ba17121f58a3645e3799598579755)](https://circleci.com/gh/brekk/ljs2)
 
   ## command line
 
@@ -14,14 +18,20 @@
   $ ljs2 --help
   ```
 */
+/// plain ../../CHANGELOG.md
+/// plain ../../CONTRIBUTING.md
+/// plain ../../related-work.md
+/// plain ../../LICENSE
 
-import fs from 'fs'
-import path from 'path'
-import program from 'commander'
+const fs = require(`fs`)
+const path = require(`path`)
+const program = require(`commander`)
 
-import literate from '../lib/literate'
+const {literate} = require(`../literate`)
 
-const pkgJson = JSON.parse(fs.readFileSync(path.join(__dirname, `..`, `package.json`)).toString())
+const pkgJson = JSON.parse(
+  fs.readFileSync(path.join(__dirname, `..`, `..`, `package.json`)
+).toString())
 
 program.usage(`[options] file.js`)
 program.version(pkgJson.version)

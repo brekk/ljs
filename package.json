@@ -64,7 +64,7 @@
     "check-coverage": true
   },
   "bin": {
-    "ljs2": "./bin/ljs2.js"
+    "ljs2": "./lib/bin/ljs2.js"
   },
   "scripts": {
     "test-old": "make test",
@@ -77,7 +77,8 @@
     "transpile": "babel src -d lib",
     "build": "npm run cover",
     "lint": "eslint -c ./.eslintrc src/** --rule 'no-console: 2'",
-    "publish": "npm run build"
+    "publish": "npm run build && npm run inception",
+    "inception": "ljs2 --no-code -o README.md ./lib/bin/ljs2.js"
   },
   "devDependencies": {
     "ava": "^0.16.0",

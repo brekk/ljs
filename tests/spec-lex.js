@@ -3,7 +3,7 @@ import test from 'ava'
 import keys from 'lodash/fp/keys'
 import {
   lex,
-//   addWhitespace,
+  addWhitespace,
   range
 } from '../src/lex'
 
@@ -83,4 +83,6 @@ test(`range should throw if comment doesn't have range property`, (t) => {
   t.plan(1)
   t.throws(() => range(1, 2, {}))
 })
-test.todo(`addWhitespace`)
+test(`addWhitespace should throw if given a syntax input which lacks a comments node`, (t) => {
+  t.throws(() => addWhitespace(`raw`, {}, [], 1, 1))
+})

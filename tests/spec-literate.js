@@ -54,9 +54,11 @@ test(`unindent should unindent lines which are indented`, (t) => {
     ``,
     `    0`,
     `    1`,
-    `    2`
+    `    2`,
+    `  3  `,
+    `    4    `
   ].join(`\n`))
-  t.is(out, `0\n1\n2\n`)
+  t.is(out, `0\n1\n2\n  3  \n4    \n`)
 })
 test(`literate`, (t) => {
   t.plan(2)

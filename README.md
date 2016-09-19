@@ -1,59 +1,41 @@
-# ljs
+# ljs2
 
 > Generate docs from your source
 
-[![Build Status](https://travis-ci.org/phadej/grunt-literate.svg)](https://travis-ci.org/phadej/ljs)
-[![NPM version](https://badge.fury.io/js/ljs.svg)](http://badge.fury.io/js/ljs)
-[![Dependency Status](https://gemnasium.com/phadej/ljs.svg)](https://gemnasium.com/phadej/ljs)
-[![Code Climate](https://img.shields.io/codeclimate/github/phadej/ljs.svg)](https://codeclimate.com/github/phadej/ljs)
+[![CircleCI](https://circleci.com/gh/brekk/ljs2.svg?style=badge&circle-token=ba5f3371283ba17121f58a3645e3799598579755)](https://circleci.com/gh/brekk/ljs2)
 
 ## command line
 
-If `ljs` is installed globally,
-you can use `ljs` command line tool to process your literate javascript files
+If `ljs2` is installed globally,
+you can use `ljs2` command line tool to process your literate javascript files
 
 ```sh
-$ ljs -c -o foo.md foo.js
-$ ljs --help
-```
-
-### library
-
-You can also use *grunt-literate* as a normal library:
-
-```js
-var documentation = require("grunt-literate")("hello.js", { code: true });
+$ ljs2 -c -o foo.md foo.js
+$ ljs2 --help
 ```
 
 ## Release History
 
-- **0.3.2** &mdash; *2015-08-30* &mdash; Dependencies update
-- **0.3.1** &mdash; *2014-12-21* &mdash; Dependencies update
-- **0.3.0** &mdash; *2014-12-21* &mdash; `--no-code` &amp; `--no-meld`
-- **0.2.5** &mdash; *2014-10-11* &mdash; Use eslint and jscs. Update underscore
-- **0.2.4** &mdash; *2014-07-18* &mdash; Use commander
-- **0.2.3** &mdash; *2014-07-03* &mdash; Strip only empty lines from beginning of code blocks
-- **0.2.2** &mdash; *2014-07-02* &mdash; Whitespace handling for included files
-- **0.2.1** &mdash; *2014-07-01* &mdash; Dependencies update
-- **0.2.0** &mdash; *2014-05-25* &mdash; Initial release
-	- Split out of [grunt-literate](https://github.com/phadej/grunt-literate) 0.1.5
+- **1.0.0** &mdash; *2016-09-19* &mdash; Initial release
+  - forked off of [ljs](https://github.com/phadej/ljs) 0.3.2
 
 ## Contributing
 
-In lieu of a formal styleguide, take care to maintain the existing coding style.
-Add unit tests for any new or changed functionality.
-Lint and test your code using [Grunt](http://gruntjs.com/).
-Make a pull request, but don't commit `README.md`!
+_Disclaimer:_ As this project is a fork of an existing (seemingly [unmaintained](https://github.com/phadej/ljs/pulse)) [library](https://github.com/phadej/ljs), the direction has changed slightly.
+
+In the spirit of the original [CONTRIBUTING.md](https://github.com/phadej/ljs/blob/master/CONTRIBUTING.md):
+
+Take care to maintain the existing coding style (as maintained by eslint). Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Related work
 
-This task could be abused to do literate programming.
-[Docco](http://jashkenas.github.io/docco/) is similar tool,
-however *ljs* is markup-language-agnostic.
+This tool can be used to do literate programming!
+[Docco](http://jashkenas.github.io/docco/) is similar tool, however *ljs2* is markup-language-agnostic.
 
 The MIT License (MIT)
 
-Copyright (c) 2013, 2014 Oleg Grenrus
+* Copyright (c) 2016 Brekk Bockrath
+* Copyright (c) 2013, 2014 [Oleg Grenrus](https://github.com/phadej/ljs/blob/master/LICENSE)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
