@@ -1,14 +1,11 @@
 {
   "name": "ljs2",
-  "description": "Generate docs from your source",
+  "description": "Generate docs from your source - based on ljs",
   "version": "0.0.0",
   "homepage": "https://github.com/brekk/ljs2",
-  "author": {
-    "name": "Oleg Grenrus",
-    "email": "oleg.grenrus@iki.fi",
-    "url": "http://oleg.fi/"
-  },
+  "author": "brekk",
   "contributors": [
+    "Oleg Grenrus <oleg.grenrus@iki.fi>",
     "Brekk Bockrath <brekk@brekkbockrath.com>"
   ],
   "repository": {
