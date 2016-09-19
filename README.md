@@ -2,7 +2,7 @@
 
 > Generate docs from your source
 
-[![CircleCI](https://circleci.com/gh/brekk/ljs2.svg?style=badge&circle-token=ba5f3371283ba17121f58a3645e3799598579755)](https://circleci.com/gh/brekk/ljs2)
+[![CircleCI](https://circleci.com/gh/brekk/ljs2.svg?style=shield&circle-token=ba5f3371283ba17121f58a3645e3799598579755)](https://circleci.com/gh/brekk/ljs2)
 
 ## command line
 

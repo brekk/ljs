@@ -77,7 +77,8 @@
     "transpile": "babel src -d lib",
     "build": "npm run cover",
     "lint": "eslint -c ./.eslintrc src/** --rule 'no-console: 2'",
-    "publish": "npm run build && npm run inception",
+    "build-all": "npm run build && npm run inception",
+    "publish": "npm run build-all",
     "inception": "ljs2 --no-code -o README.md ./lib/bin/ljs2.js"
   },
   "devDependencies": {
