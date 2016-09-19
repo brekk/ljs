@@ -76,7 +76,7 @@
     "lint": "eslint -c ./.eslintrc src/** --rule 'no-console: 2'",
     "build-all": "npm run build && npm run inception",
     "publish": "npm run build-all",
-    "inception": "ljs2 --no-code -o README.md ./lib/bin/ljs2.js"
+    "inception": "./lib/bin/ljs2.js --no-code -o README.md ./lib/bin/ljs2.js"
   },
   "devDependencies": {
     "ava": "^0.16.0",

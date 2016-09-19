@@ -16,7 +16,7 @@ const note = annotate(namespace)
 const debug = _debug(namespace, [`base`])
 
 export const regex = {
-  splain: /^\s*plain\s+(.*?)\s*$/,
+  plain: /^\s*plain\s+(.*?)\s*$/,
   include: /^\s*include\s+(.*?)\s*$/,
   whitespaceEnd: /^\s*$/,
   whitespace: /^(\s*)/,
@@ -80,21 +80,31 @@ export const fileDirective = note(`fileDirective`)(
   }
 )
 
+const magicIndicator = ` =>`
+
+const commentHasMagicIndicator = (t) => {
+  if (t && t.type && t.value && t.value.value) {
+    return (t.type === `Comment`) &&
+    (t.value.type === `Line`) &&
+    (t.value.value.slice(0, magicIndicator.length) === magicIndicator)
+  }
+  return false
+}
+
 export const getTokens = note(`getTokens`)(
   function _getTokens(filename) {
     const source = fs.readFileSync(filename, `utf8`)
     const raw = stripShebang(source)
     const tokens = lex({sourceType: `module`}, raw)
-    debug(`tokens!`, tokens)
     let resTokens = []
     forEach(note(`processToken`)(
       function _processToken(t) {
         let r
-        if (t.type === `Comment` && t.value.type === `Line` && t.value.value[0] === `/`) {
-          debug(`### comment-line-/`)
-          const value = t.value.value.substr(1)
-          r = fileDirective(filename, value, regex.splain, note(`matchExplained`)(
-            function _matchExplained(name) {
+        if (commentHasMagicIndicator(t)) {
+          const value = t.value.value.substr(magicIndicator.length + 1)
+          debug(`### comment-line`, value)
+          r = fileDirective(filename, value, regex.plain, note(`matchPlain`)(
+            function _matchPlain(name) {
               resTokens.push({
                 type: `Plain`,
                 value: fs.readFileSync(name).toString()
@@ -102,7 +112,6 @@ export const getTokens = note(`getTokens`)(
             })
           )
           if (r) {
-            debug(`### barfing on matchExplained`)
             return
           }
           debug(`### passed explained`)
@@ -112,7 +121,6 @@ export const getTokens = note(`getTokens`)(
             })
           )
           if (r) {
-            debug(`### barfing on matchIncluded`)
             return
           }
           assert(false, `unknown directive: ` + value)

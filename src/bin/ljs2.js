@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 /* eslint-disable max-len */
-/* eslint-disable spaced-comment */
 /**
   # ljs2
 
@@ -18,10 +17,10 @@
   $ ljs2 --help
   ```
 */
-/// plain ../../CHANGELOG.md
-/// plain ../../CONTRIBUTING.md
-/// plain ../../related-work.md
-/// plain ../../LICENSE
+// => plain ../../CHANGELOG.md
+// => plain ../../CONTRIBUTING.md
+// => plain ../../related-work.md
+// => plain ../../LICENSE
 
 const fs = require(`fs`)
 const path = require(`path`)
