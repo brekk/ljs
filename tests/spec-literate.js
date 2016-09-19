@@ -3,7 +3,7 @@ import test from 'ava'
 import {
   getTokens,
   unindent,
-  //   literate,
+  literate,
   regex,
   isWhitespace,
   stripShebang,
@@ -58,4 +58,11 @@ test(`unindent should unindent lines which are indented`, (t) => {
   ].join(`\n`))
   t.is(out, `0\n1\n2\n`)
 })
-test.todo(`literate`)
+test(`literate`, (t) => {
+  t.plan(2)
+  t.is(typeof literate, `function`)
+  const output = literate(`./fixtures/fixture-array.js`, {code: true})
+  // fs.writeFileSync(`./fixtures/fixture-array-literate.md`, output, `utf8`)
+  const expected = fs.readFileSync(`./fixtures/fixture-array-literate.md`, `utf8`)
+  t.is(expected, output)
+})

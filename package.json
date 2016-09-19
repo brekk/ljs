@@ -36,10 +36,10 @@
     "concurrency": 10
   },
   "nyc": {
-    "statements": 64,
-    "branches": 37,
-    "functions": 68,
-    "lines": 64,
+    "statements": 85,
+    "branches": 70,
+    "functions": 89,
+    "lines": 85,
     "reporter": [
       "lcov",
       "json",

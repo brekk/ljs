@@ -31,15 +31,15 @@ export const range = curry(function _range(from, to, comment) {
 })
 
 /**
- * add whitespace to a range
- * @function addWhitespace
- * @curried
- * @impure
- * @param {string} raw - the original raw source
- * @param {object} syntax - the parsed AST
- * @param {number} from - number start
- * @param {number} to - number end
- * @return {null} nothing
+add whitespace to a range
+@function addWhitespace
+@curried
+@impure
+@param {string} raw - the original raw source
+@param {object} syntax - the parsed AST
+@param {number} from - number start
+@param {number} to - number end
+@return {null} nothing
  */
 export const addWhitespace = curry(function _addWhitespace(raw, syntax, tokens, from, to) {
   debug.addWhitespace(`# input`, raw, syntax, tokens, from, to)
