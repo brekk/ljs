@@ -10,7 +10,6 @@ import {debug as _debug, annotate} from 'f-utility/dev/debug'
 
 import {lex} from './lex'
 
-
 const namespace = `ljs2:literate`
 const note = annotate(namespace)
 const debug = _debug(namespace, [`base`])
@@ -18,6 +17,7 @@ const debug = _debug(namespace, [`base`])
 export const regex = {
   plain: /^\s*plain\s+(.*?)\s*$/,
   include: /^\s*include\s+(.*?)\s*$/,
+  ignore: /^\s*#\s+(.*?)\s*$/,
   whitespaceEnd: /^\s*$/,
   whitespace: /^(\s*)/,
   newline: /\n/,
@@ -82,14 +82,18 @@ export const fileDirective = note(`fileDirective`)(
 
 const magicIndicator = ` =>`
 
-const commentHasMagicIndicator = (t) => {
-  if (t && t.type && t.value && t.value.value) {
-    return (t.type === `Comment`) &&
-    (t.value.type === `Line`) &&
-    (t.value.value.slice(0, magicIndicator.length) === magicIndicator)
+const commentHasMagicIndicator = note(`commentHasMagicIndicator`)(
+  function _commentHasMagicIndicator(t) {
+    if (t && t.type && t.value && t.value.value) {
+      return (
+        t.type === `Comment` &&
+        t.value.type === `Line` &&
+        t.value.value.slice(0, magicIndicator.length) === magicIndicator
+      )
+    }
+    return false
   }
-  return false
-}
+)
 
 export const getTokens = note(`getTokens`)(
   function _getTokens(filename) {
@@ -124,6 +128,8 @@ export const getTokens = note(`getTokens`)(
             return
           }
           assert(false, `unknown directive: ` + value)
+        } else if (regex.ignore.test(t.value.value)) {
+          return
         } else {
           t.raw = raw.substr(t.range[0], t.range[1] - t.range[0])
           resTokens.push(t)

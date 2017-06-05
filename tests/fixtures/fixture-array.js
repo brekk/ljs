@@ -1,5 +1,7 @@
 import {curry} from 'lodash/fp'
 
+// # This line should be invisible
+// This line should be visible
 /**
  * @namespace util.array
  * @function join
@@ -9,7 +11,7 @@ import {curry} from 'lodash/fp'
  * @param {array} array
  * @return {string}
  * @example
- * <!--@join(`x`, [1,2,3])-->
+ * <!--@assert(join(`x`, [1,2,3]), `1x2x3`)-->
  * <!--/@-->
  */
 export const join = curry(function _join(joiner, array) {

@@ -65,8 +65,8 @@ test(`lex should generate a list of tokens`, (t) => {
   const raw = lex({sourceType: `module`}, fs.readFileSync(`./fixtures/fixture-array.js`, `utf8`))
   // fs.writeFileSync(`./fixtures/fixture-array-lex.json`, JSON.stringify(raw), `utf8`)
   const rawLex = JSON.parse(fs.readFileSync(`./fixtures/fixture-array-lex.json`, `utf8`))
-  t.deepEqual(raw, rawLex)
   t.deepEqual(keys(raw), keys(rawLex))
+  t.deepEqual(raw, rawLex)
 })
 test(`range should return a boolean based on what (from, to) numbers were given`, (t) => {
   t.plan(3)

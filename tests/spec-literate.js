@@ -1,5 +1,6 @@
 import fs from 'fs'
 import test from 'ava'
+import R from 'ramda'
 import {
   getTokens,
   unindent,
@@ -42,10 +43,34 @@ test(`getTokens should generate tokens for a given file`, (t) => {
   t.plan(2)
   t.is(typeof getTokens, `function`)
   const tokenized = getTokens(`./fixtures/fixture-array.js`)
+  const jsonFixture = `./fixtures/fixture-array-tokens.json`
+  // (() => {
+  //   fs.writeFileSync(jsonFixture, JSON.stringify(tokenized), `utf8`)
+  // })()
   t.deepEqual(
     tokenized,
-    JSON.parse(fs.readFileSync(`./fixtures/fixture-array-tokens.json`, `utf8`))
+    JSON.parse(fs.readFileSync(jsonFixture, `utf8`))
   )
+})
+
+// /*
+const xtrace = R.curry((l, a, z, y) => {
+  l(a, z(y)) // eslint-disable-line fp/no-unused-expression
+  return y
+})
+const trace = xtrace(console.log, R.__, R.identity) // eslint-disable-line no-console
+const thread = xtrace(console.log) // eslint-disable-line no-console
+// */
+test(`getTokens should ignore lines with the # directive`, (t) => {
+  const tokenized = getTokens(`./fixtures/fixture-array.js`)
+  const iterator = R.pipe(
+    R.map(R.path([`value`, `value`])),
+    R.filter(R.identity),
+    R.filter((x) => x.indexOf(`visible`) > -1),
+    R.length
+  )
+  const linesThatSayVisible = iterator(tokenized)
+  t.is(linesThatSayVisible, 1)
 })
 test(`unindent should unindent lines which are indented`, (t) => {
   t.plan(2)

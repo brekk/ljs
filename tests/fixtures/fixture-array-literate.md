@@ -1,6 +1,9 @@
 
 ```js
 import {curry} from 'lodash/fp'
+
+
+// This line should be visible
 ```
 
 
@@ -12,7 +15,7 @@ import {curry} from 'lodash/fp'
 * @param {array} array
 * @return {string}
 * @example
-* <!--@join(`x`, [1,2,3])-->
+* <!--@assert(join(`x`, [1,2,3]), `1x2x3`)-->
 * <!--/@-->
 
 
