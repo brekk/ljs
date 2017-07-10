@@ -1,7 +1,7 @@
 {
   "name": "ljs2",
   "description": "Generate docs from your source - based on ljs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/brekk/ljs2",
   "author": "brekk",
   "contributors": [
