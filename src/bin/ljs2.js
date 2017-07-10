@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable max-len */
 /**
-  # ljs2
+  ![ljs2](https://cdn.rawgit.com/brekk/ljs2/8a107c0/logo.svg)
 
   > Generate docs from your source
 

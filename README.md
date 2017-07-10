@@ -1,3 +1,5 @@
+![ljs2](https://cdn.rawgit.com/brekk/ljs2/8a107c0/logo.svg)
+
 # ljs2
 
 > Generate docs from your source
