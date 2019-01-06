@@ -1,90 +1,46 @@
 {
   "env": {
     "node": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
-  "space": 2,
-  "semicolon": false,
-  "esnext": true,
   "parserOptions": {
     "ecmaVersion": 7,
     "sourceType": "module"
   },
-  "ignores": ["*.js", "build/**"],
   "rules": {
+    "delorean/yell-on-then": [1, {library: "F"}],
+    "delorean/yell-on-catch": [1, {library: "F"}],
+    "prettier/prettier": [2, {"semi": false }],
+    "no-extra-semi": 2,
     "valid-jsdoc": "error",
     "no-var": 2,
     "eqeqeq": [2, "smart"],
-    "babel/arrow-parens": [2, "always"],
+    "arrow-parens": [2, "as-needed"],
     "consistent-this": 0,
     "func-names": [2],
     "generator-star-spacing": [2, "after"],
     "indent": [2, 2],
-    "jsx-quotes": [1, "prefer-double"],
-    "quotes": [2, "backtick"],
     "max-len": [1, 100, 2],
     "new-cap": [2, {"capIsNew": false}],
     "no-trailing-spaces": [2, { "skipBlankLines": true }],
-    "no-unused-vars": [2, {"vars": "all", "varsIgnorePattern": "^__style" }],
+    "no-unused-vars": [2, {"vars": "all", "varsIgnorePattern": "^___" }],
     "object-curly-spacing": 0,
     "one-var": 0,
-    "operator-linebreak": [2, "after"],
     "prefer-reflect": 0,
     "space-before-function-paren": [2, "never"],
     "strict": 0,
     "no-shadow": [2, { "builtinGlobals": false, "hoist": "all" }],
-    "lodash-fp/use-fp": 2,
-    "lodash-fp/consistent-compose": [2, "flow"],
-    "lodash-fp/consistent-name": [2, "fp"],
-    "lodash-fp/no-argumentless-calls": 2,
-    "lodash-fp/no-chain": 2,
-    "lodash-fp/no-extraneous-args": 2,
-    "lodash-fp/no-extraneous-function-wrapping": 2,
-    "lodash-fp/no-extraneous-iteratee-args": 2,
-    "lodash-fp/no-for-each": 0,
-    "lodash-fp/no-partial-of-curried": 2,
-    "lodash-fp/no-single-composition": 2,
-    "lodash-fp/no-submodule-destructuring": 2,
-    "lodash-fp/no-unused-result": 2,
-    "lodash-fp/prefer-compact": 2,
-    "lodash-fp/prefer-get": 2,
-    "lodash-fp/prefer-identity": [2, {"arrowFunctions": true}],
-    "lodash-fp/preferred-alias": [
-      2,
-      {
-        "overrides": [
-          "map",
-          "all",
-          "allPass",
-          "any",
-          "anyPass",
-          "apply",
-          "set",
-          "get",
-          "first",
-          "last",
-          "filter",
-          "extend",
-          "equals",
-          "toPairs",
-          "toPairsIn",
-          "invert",
-          "pick",
-          "at",
-          "rest",
-          "flatten"
-        ]
-      }
-    ],
     "import/named": 2,
     "import/no-mutable-exports": 2,
     "import/order": 2,
     "import/extensions": [2, {
+      "json": "always",
       "js": "never",
       "validation": "always",
       "task": "always"
     }]
   },
-  "extends": ["standard"],
-  "plugins": ["babel", "lodash-fp", "import"]
+  "extends": ["standard", "prettier"],
+  "plugins": ["babel", "fp", "import", "prettier", "delorean"]
 }

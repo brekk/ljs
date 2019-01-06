@@ -1,0 +1,44 @@
+js:
+  key: J
+  color: bgCyan
+  matches:
+  - \**/*.js
+documentation:
+  key: D
+  color: bgBlue
+  matches:
+  - \**/*.md
+  - \**/*.markdown
+lint:
+  key: L
+  color: bgMagenta
+  matches:
+  - \**/.eslintrc
+tests:
+  key: T
+  color: bgRed
+  matches:
+  - \**/*.spec.js
+  - \**/tests/*
+dependencies:
+  key: D
+  color: bgGreen
+  matches:
+  - \**/package.json
+  - \**/yarn.lock
+  - \**/package-lock.json
+config:
+  key: C
+  color: bgYellow
+  matches:
+  - \**/package.json
+  - \**/package-scripts.js
+  - \**/*.config.js
+  - \**/.* 
+collapseAuthors: false
+timezone: America/Los_Angeles
+aliases:
+  brekk:
+  - brekk
+  - Brekk
+  - Brekk Bockrath

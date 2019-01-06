@@ -26,11 +26,11 @@ const fs = require(`fs`)
 const path = require(`path`)
 const program = require(`commander`)
 
-const {literate} = require(`../literate`)
+const { literate } = require(`../literate`)
 
 const pkgJson = JSON.parse(
-  fs.readFileSync(path.join(__dirname, `..`, `..`, `package.json`)
-).toString())
+  fs.readFileSync(path.join(__dirname, `..`, `..`, `package.json`)).toString()
+)
 
 program.usage(`[options] file.js`)
 program.version(pkgJson.version)
